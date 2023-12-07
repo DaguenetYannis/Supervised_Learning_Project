@@ -1,0 +1,55 @@
+#Just checking data
+rm(list=ls())
+
+#Load datasets
+learn_set <- read.csv("learn_dataset.csv")
+test_set <-  read.csv("test_dataset.csv")
+learn_EMP_CONTRACT <- read.csv("learn_dataset_EMP_CONTRACT.csv")
+test_EMP_CONTRACT <- read.csv("test_dataset_EMP_CONTRACT.csv")
+learn_sport <- read.csv("learn_dataset_sport.csv")
+test_sport <- read.csv("test_dataset_sport.csv")
+learn_job <- read.csv("learn_dataset_job.csv")
+test_job <- read.csv("test_dataset_job.csv")
+
+sets <- c(learn_set,test_set,learn_EMP_CONTRACT,test_EMP_CONTRACT,learn_sport,test_sport)
+
+# Load the packages we need
+library(dplyr)
+library(tidyverse)
+
+#primary_key: primary key (unique identifier);
+#• AGE_2020: age;
+#• SEX: sex;
+#• Familty_type: family type;
+#• HIGHEST_DEGREE: highest diploma;
+#• Act: activity type;
+#• Studying: true if the person is a student;
+#• Job_42: socio-professional category (PCS 2003 norm, see below);
+#• Insee: INSEE code of the city of residence.
+
+for(set in sets) {
+  summary(set)
+  str(set)
+  head(set)
+}
+
+# Left join datasets based on 'primary_key'
+learn_merged_data <- left_join(learn_set, learn_sport, by = "primary_key")
+learn_merged_data <- left_join(learn_merged_data, learn_EMP_CONTRACT, by = "primary_key")
+learn_merged_data <- left_join(learn_merged_data, learn_job, by = "primary_key")
+
+#Code datasets
+Work_desc_code <- read.csv("code_Work_description.csv")
+Code_Map <- read.csv("code_Work_description_map.csv")
+Work_desc_code_N2 <- read.csv("code_Work_description_n2.csv")
+Work_desc_code_N1 <- read.csv("code_Work_description_n1.csv")
+Job_code <- read.csv("code_Job_42.csv")
+City_adm <- read.csv("city_adm.csv")
+City_loc <- read.csv("city_loc.csv")
+City_pop <- read.csv("city_pop.csv")
+Departments <- read.csv("departments.csv")
+Regions <- read.csv("regions.csv")
+
+City_merged <- left_join(City_adm, City_loc, by = "Insee")
+City_merged <- left_join(City_merged, City_pop, by = "Insee")
+
