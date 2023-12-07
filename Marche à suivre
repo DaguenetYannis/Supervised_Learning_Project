@@ -4,7 +4,9 @@
 Lier les databases dans des csv comportant plus d'informations.
 
 #Etape 2: 
+
 Déterminer les deux algorithmes à réaliser à partir du cours.
+Déterminer la loss function
 
 #Etape 3 (optionnel): 
 Regarder comment se comporte le KNN. 
@@ -14,3 +16,4 @@ Coder le random Forest et le modèle linéaire.
 
 #Etape 5:
 Chercher des variables supplémentaires pour affiner le modèle.
+
