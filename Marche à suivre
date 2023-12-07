@@ -1,3 +1,16 @@
 #ML Project
 
 #Etape 1: 
+Lier les databases dans des csv comportant plus d'informations.
+
+#Etape 2: 
+Déterminer les deux algorithmes à réaliser à partir du cours.
+
+#Etape 3 (optionnel): 
+Regarder comment se comporte le KNN. 
+
+#Etape 4:
+Coder le random Forest et le modèle linéaire.
+
+#Etape 5:
+Chercher des variables supplémentaires pour affiner le modèle.
