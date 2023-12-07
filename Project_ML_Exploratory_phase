@@ -1,7 +1,9 @@
+#Commentaire 
 #Just checking data
 rm(list=ls())
 
 #Load datasets
+
 learn_set <- read.csv("learn_dataset.csv")
 test_set <-  read.csv("test_dataset.csv")
 learn_EMP_CONTRACT <- read.csv("learn_dataset_EMP_CONTRACT.csv")
