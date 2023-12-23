@@ -50,8 +50,40 @@ City_adm <- read.csv("city_adm.csv")
 City_loc <- read.csv("city_loc.csv")
 City_pop <- read.csv("city_pop.csv")
 Departments <- read.csv("departments.csv")
+
 Regions <- read.csv("regions.csv")
 
 City_merged <- left_join(City_adm, City_loc, by = "Insee")
 City_merged <- left_join(City_merged, City_pop, by = "Insee")
 
+
+#Etape 1 : trouver un bon modèle avec la base initiale. 
+learn_set <- read.csv("learn_dataset.csv")
+
+#regression linéaire simple 1 variable 
+#essaie avec la variable age 
+mdllineaire1<-lm(target~AGE_2020,data=learn_set)
+#calcul du R2 
+summary(mdllineaire1)$r.squared 
+#résultat : 0.001 très mauvais. 
+
+#regression linéaire 2 variables
+#essaie avec 
+mdllineaire2<-lm(target~AGE_2020+Act,data=learn_set)
+#calcul du R2 
+summary(mdllineaire2)$r.squared 
+#résultat : 0.16 c'est mieux
+
+#regression linéaire 3 variables
+#essaie avec 
+mdllineaire2<-lm(target~AGE_2020+Act,data=learn_set)
+#calcul du R2 
+summary(mdllineaire2)$r.squared 
+#résultat : 0.16 c'est mieux
+
+#premier problème les catégories.
+#essayons sans primary key car c'est seulement un identifiant et sans la catégorie insee qui est la catégorie géographique
+mdllineaire3<-lm(target~AGE_2020+Act+Familty_type+Studying+SEX+HIGHEST_DEGREE+Job_42,data=learn_set)
+#calcul du R2 
+summary(mdllineaire3)$r.squared 
+#résultat : 0.53 c'est encore mieux 
