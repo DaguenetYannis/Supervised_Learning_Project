@@ -87,3 +87,16 @@ mdllineaire3<-lm(target~AGE_2020+Act+Familty_type+Studying+SEX+HIGHEST_DEGREE+Jo
 #calcul du R2 
 summary(mdllineaire3)$r.squared 
 #résultat : 0.53 c'est encore mieux 
+
+
+# ********************************
+#MISSING DATA
+#*********************************
+learn_merged_data_sport <- left_join(learn_set, learn_sport, by = "primary_key")
+#test sur le sport set
+learn_sport_imput<-missRanger(
+  learn_merged_data_sport, 
+  formula = .~., 
+  num.tree=1000,
+  seed=3
+)
